@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>lab2-B1129054</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script>
+        window.onload = function () {
+            var container;
+            container = document.getElementById('container');
+            container.textContent = generateRandomLetters(Math.floor(Math.random() * 3));
+        }
+        /*function loadpage(){
+
+        }*/
+        function generateRandomLetters(length) {
+            var result = '';
+            const characters = 'abcdefghijklmnopqrstuvwxyz';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+        window.addEventListener("keyup", function (e) {
+            console.log(e.key);
+            var tmpstr = container.textContent.substr(0, 1);
+            if (e.key == tmpstr) {
+                tmpstr = container.textContent;
+                container.textContent = tmpstr.substring(1, tmpstr.length);
+            }
+            add_new_chars();
+        });
+        function add_new_chars() {
+            container.textContent += generateRandomLetters(Math.floor(Math.random() * 3) + 1);
+        };
+    </script>
+</head>
+
+
+<body>
+    <div id="container" tabindex="0" class="blockquote text-nowrap">
+    </div>
+</body>
+</html>
